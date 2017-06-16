@@ -1,26 +1,18 @@
+DOTFILES_DIR=${HOME}/.dotfiles
+
+#Include $HOME/bin directory in the PATH
 if [ -d $HOME/bin ]; then
     export PATH=$HOME/bin:$PATH
 fi
 
-if [ -f .bash_aliases ]; then
-    source .bash_aliases
+#add some handy aliases
+if [ -f "${DOTFILES_DIR}/bash_aliases.bash" ]; then
+    source ${DOTFILES_DIR}/bash_aliases.bash
 fi
 
-#export THEME=$HOME/.bash/themes/agnoster-bash/agnoster.bash
-#if [[ -f $THEME ]]; then
-#    export DEFAULT_USER=`whoami`
-#    source $THEME
-#fi
-
-#if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-#  __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
-#  GIT_PROMPT_SHOW_UPSTREAM=1
-#  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
-#  source ~/.bash-git-prompt/gitprompt.sh
-#fi
-
-#if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-#    __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
-#    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
-#fi
-#
+#Change prompt to show handy info
+if [ -d "${HOME}/.dotfiles/prompt" ]; then
+ __GIT_PROMPT_DIR="${HOME}/.dotfiles/prompt"
+ GIT_PROMPT_SHOW_UPSTREAM=1
+ [ -f ${HOME}/.dotfiles/prompt/gitprompt.sh ] && source ${HOME}/.dotfiles/prompt/gitprompt.sh
+fi
