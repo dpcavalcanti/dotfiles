@@ -6,7 +6,7 @@ alias gba='git branch -a'
 alias gc='git commit'
 alias gct='git checkout'
 
-#Stash alias
+#Stash aliases
 alias gsh='git stash'
 alias gshp='git stash pop'
 alias gsha='git stash apply'
