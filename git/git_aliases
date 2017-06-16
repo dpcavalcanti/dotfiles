@@ -1,3 +1,14 @@
 alias gs='git status'
 alias gl='git log'
+alias glg='git log --graph'
 alias gb='git branch'
+alias gba='git branch -a'
+alias gc='git commit'
+alias gct='git checkout'
+
+#Stash alias
+alias gsh='git stash'
+alias gshp='git stash pop'
+alias gsha='git stash apply'
+alias gshl='git stash list'
+alias gshd='git stash drop'
