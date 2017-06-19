@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 checkout() {
   [ -d "$2" ] || git clone "$1" "$2"
@@ -6,14 +7,16 @@ checkout() {
 
 checkout "git://github.com/dpcavalcanti/dotfiles.git" "$HOME/.dotfiles"
 
+mkdir -p ${HOME}/bin
+
 if [ -f $HOME/.bash_profile ]; then
-  echo source $HOME/.dotfiles/bash_profile.bash >> $HOME/.bash_profile
+  echo "source $HOME/.dotfiles/bash_profile.bash" >> $HOME/.bash_profile
 else
   ln -s $HOME/.dotfiles/bash_profile.bash $HOME/.bash_profile
 fi
 
 if [ -f $HOME/.bashrc ]; then
-  echo source $HOME/.dotfiles/bashrc.bash >> $HOME/.bashrc
+  echo "source $HOME/.dotfiles/bashrc.bash" >> $HOME/.bashrc
 else
   ln -s $HOME/.dotfiles/bashrc.bash $HOME/.bashrc
 fi

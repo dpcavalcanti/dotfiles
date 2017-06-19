@@ -4,7 +4,7 @@ alias glg='git log --graph'
 alias gb='git branch'
 alias gba='git branch -a'
 alias gc='git commit'
-alias gct='git checkout'
+alias gch='git checkout'
 
 #Stash aliases
 alias gsh='git stash'
