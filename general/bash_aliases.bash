@@ -1,3 +1,13 @@
+#
+# Defines System aliases.
+#
+#
+
+#
+# Settings
+#
+#
+
 #LS
 alias ls='ls -G'
 alias ll='ls -l'
@@ -8,3 +18,4 @@ alias lla='ls -la'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+

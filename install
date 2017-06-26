@@ -8,9 +8,11 @@ checkout() {
 checkout "git://github.com/dpcavalcanti/dotfiles.git" "$HOME/.dotfiles"
 
 mkdir -p ${HOME}/bin
+mkdir -p ${HOME}/Applications
+mkdir -p ${HOME}/Developer
 
-if [ -f $HOME/.bash_profile ]; then
-  echo "source $HOME/.dotfiles/bash_profile.bash" >> $HOME/.bash_profile
+if [ -f ${HOME}/.bash_profile ]; then
+  grep "source $HOME/.dotfiles/bash_profile.bash" ${HOME}/.bash_profile || echo "source $HOME/.dotfiles/bash_profile.bash" >> $HOME/.bash_profile
 else
   ln -s $HOME/.dotfiles/bash_profile.bash $HOME/.bash_profile
 fi
