@@ -22,3 +22,4 @@ if [ -f $HOME/.bashrc ]; then
 else
   ln -s $HOME/.dotfiles/bashrc.bash $HOME/.bashrc
 fi
+
