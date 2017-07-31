@@ -8,6 +8,25 @@
 #
 #
 
+# Branch
+function git-branch-current() {
+
+  if ! git rev-parse 2> /dev/null; then
+    echo "$0: not a repository: $PWD" >&2
+    return 1
+  fi
+
+  local ref="$(git symbolic-ref HEAD 2> /dev/null)"
+
+  if [[ -n "$ref" ]]; then
+    echo "${ref#refs/heads/}"
+    return 0
+  else
+    return 1
+  fi
+
+}
+
 # Log
 _git_log_medium_format='%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
 _git_log_oneline_format='%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'
