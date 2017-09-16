@@ -11,6 +11,19 @@ mkdir -p ${HOME}/bin
 mkdir -p ${HOME}/Applications
 mkdir -p ${HOME}/Developer
 
+#Install Xcode
+#Configure default settings
+#Configure git default settings
+#Install Homebrew
+#Install Homebrew cask
+#Install basic apps (Docker, virtualbox, hashicorp's apps)
+#Install sublime
+#Install Iterm
+#Install bash
+#Configure autocd (shopt options)
+#Install fuse and ntfs-3g
+
+
 if [ -f ${HOME}/.bash_profile ]; then
   grep "source $HOME/.dotfiles/bash_profile.bash" ${HOME}/.bash_profile || echo "source $HOME/.dotfiles/bash_profile.bash" >> $HOME/.bash_profile
 else
