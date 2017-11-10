@@ -5,24 +5,28 @@ checkout() {
   [ -d "$2" ] || git clone "$1" "$2"
 }
 
+echo "Checking out dotfiles..."
 checkout "git://github.com/dpcavalcanti/dotfiles.git" "$HOME/.dotfiles"
 
+echo "Creating useful directories..."
 mkdir -p ${HOME}/bin
 mkdir -p ${HOME}/Applications
 mkdir -p ${HOME}/Developer
+mkdir -p ${HOME}/.ssh
 
-#Install Xcode
+#Install powerline Fonts
+scripts/fonts.sh
+
+#Install Homebrew
+scripts/brew.sh
+
+
+# TODO: Need change to iterm directory with its own script
 #Configure default settings
 #Configure git default settings
-#Install Homebrew
-#Install Homebrew cask
-#Install basic apps (Docker, virtualbox, hashicorp's apps)
-#Install sublime
-#Install Iterm
-#Install bash
-#Configure autocd (shopt options)
-#Install fuse and ntfs-3g
-
+#Configure iterm
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.dotfiles/iterm/config"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
 if [ -f ${HOME}/.bash_profile ]; then
   grep "source $HOME/.dotfiles/bash_profile.bash" ${HOME}/.bash_profile || echo "source $HOME/.dotfiles/bash_profile.bash" >> $HOME/.bash_profile

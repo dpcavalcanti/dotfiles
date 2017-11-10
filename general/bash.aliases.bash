@@ -19,3 +19,5 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+#Brew
+alias brew-cask='brew cask'
