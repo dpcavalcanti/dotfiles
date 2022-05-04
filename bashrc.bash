@@ -9,14 +9,20 @@ alias brew-cask='brew cask'
 #Include $HOME/bin directory in the PATH
 [ -d $HOME/bin ] && export PATH=$HOME/bin:$PATH
 
-#Activate Docker commands completions
-[ -f /usr/local/etc/bash_completion.d/docker ] || ln -s ~/Applications/Docker.app/Contents/Resources/etc/docker.bash-completion /usr/local/etc/bash_completion.d/docker
-[ -f /usr/local/etc/bash_completion.d/docker-machine ] || ln -s ~/Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion /usr/local/etc/bash_completion.d/docker-machine
-[ -f /usr/local/etc/bash_completion.d/docker-compose ] || ln -s ~/Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion /usr/local/etc/bash_completion.d/docker-compose
+export PATH="/usr/local/bin:/usr/local/opt/curl/bin:${HOME}/.krew/bin:$PATH"
+
+#Defaults for keyboard speed
+defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 #Activate brew bash completion 
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
+HB_CNF_HANDLER="$(brew --prefix)/Homebrew/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
+if [ -f "$HB_CNF_HANDLER" ]; then
+source "$HB_CNF_HANDLER";
+fi
 
 #add some handy aliases
 [ -f "${DOTFILES_DIR}/bash_aliases.bash" ] && source ${DOTFILES_DIR}/bash_aliases.bash
