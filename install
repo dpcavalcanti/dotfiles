@@ -6,7 +6,7 @@ checkout() {
 }
 
 echo "Checking out dotfiles..."
-checkout "git://github.com/dpcavalcanti/dotfiles.git" "$HOME/.dotfiles"
+checkout "git://github.com:dpcavalcanti/dotfiles.git" "$HOME/.dotfiles"
 
 echo "Creating useful directories..."
 mkdir -p ${HOME}/bin
